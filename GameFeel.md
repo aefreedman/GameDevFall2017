@@ -36,4 +36,4 @@ Real-time control means that a player's input should elicit a reaction from the 
 
 ## Exercise
 
-In groups of three, pick a game that you can all play right now (it will probably be mobile or web). Play it for about five minutes, and then evaluate the game's real-time control, simulated space, and polish. Finally, determine whether the game has "true" game feel, according to Steve. (A game with true game feel exhibits all three building blocks of game feel.)
+In groups of three, pick a game that you can all play right now (it will probably be mobile or web). Play it for about five minutes, and then evaluate the game's real-time control, simulated space, and polish. Finally, determine whether the game has "true" game feel, according to Steve. (A game with true game feel exhibits all three building blocks of game feel.) 
