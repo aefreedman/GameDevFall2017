@@ -95,21 +95,21 @@ namespace Movement
             var forward = new Vector2(transform.up.x, transform.up.y);
             var left = new Vector2(transform.up.y, transform.up.x);
             CenterOfMassRigidbody.AddForceAtPosition(forward * _drivetrainForce, RearWheelTransform.position);
-//            CenterOfMassRigidbody.AddForceAtPosition(left * -_steeringForce, FrontWheelTransform.position);
             CenterOfMassRigidbody.AddTorque(-_steeringForce);
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
+            var forward = new Vector3(transform.up.x, transform.up.y, 0);
             Gizmos.DrawLine(RearWheelTransform.transform.position,
                 RearWheelTransform.transform.position +
-                RearWheelTransform.transform.forward * _drivetrainForce);
+                forward * _drivetrainForce);
             
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(FrontWheelTransform.transform.position,
-                FrontWheelTransform.transform.position +
-                FrontWheelTransform.transform.forward * _steeringForce);
+//            Gizmos.color = Color.red;
+//            Gizmos.DrawLine(FrontWheelTransform.transform.position,
+//                FrontWheelTransform.transform.position +
+//                FrontWheelTransform.transform.forward * _steeringForce);
         }
     }
 }
