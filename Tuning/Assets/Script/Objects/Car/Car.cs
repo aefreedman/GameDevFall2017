@@ -1,7 +1,8 @@
-﻿using Movement;
+﻿using Managers;
+using Movement;
 using UnityEngine;
 
-namespace Tuning
+namespace Objects.Car
 {
     [RequireComponent(typeof(CarController))]
     public class Car : MonoBehaviour
@@ -12,7 +13,6 @@ namespace Tuning
         private int _pickups;
         private readonly int _pickupsNeeded = 3;
         public TunerGame GameManager;
-        public CarTuner Tuner;
 
         private void Start()
         {
@@ -27,8 +27,6 @@ namespace Tuning
             var rbody = GetComponent<Rigidbody2D>();
             rbody.angularVelocity = 0;
             rbody.velocity = Vector2.zero;
-
-            Tuner.SendTuningValues();
         }
 
         public void OnTriggerEnter2D(Collider2D collider)

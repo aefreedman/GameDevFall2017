@@ -12,13 +12,12 @@ namespace ScriptableObject
         [Serializable]
         public class CarSettings
         {
-            public float Acceleration = 0;
+            public float AccelerationForce = 0;
+            public float MaxAccelerationForce = 0;
             public float AngularDrag = 0;
             public float BrakeStrength = 0;
             public float LinearDrag = 0;
             public float Mass = 0;
-            public float MaxAcceleration = 0;
-            public float MaxAngularVelocity = 0;
             public float TurningRate = 0;
         }
     }
