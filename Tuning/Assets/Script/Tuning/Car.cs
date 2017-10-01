@@ -1,47 +1,47 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Movement;
+using UnityEngine;
 
-[RequireComponent(typeof(CarMovement))]
-public class Car : MonoBehaviour
+namespace Tuning
 {
-    private Vector3 _originVector3;
-    private Quaternion _originQuaternion;
-    public CarTuner Tuner;
-    public TunerGame GameManager;
-
-    private int _pickups;
-    private int _pickupsNeeded = 3;
-
-    private void Start()
+    [RequireComponent(typeof(CarController))]
+    public class Car : MonoBehaviour
     {
-        _originVector3 = transform.position;
-        _originQuaternion = transform.rotation;
-    }
+        private Quaternion _originQuaternion;
+        private Vector3 _originVector3;
 
-    public void Reset()
-    {
-        transform.position = _originVector3;
-        transform.rotation = _originQuaternion;
-        var rbody = GetComponent<Rigidbody2D>();
-        rbody.angularVelocity = 0;
-        rbody.velocity = Vector2.zero;
+        private int _pickups;
+        private readonly int _pickupsNeeded = 3;
+        public TunerGame GameManager;
+        public CarTuner Tuner;
 
-        Tuner.SendTuningValues();
-    }
-
-    public void OnTriggerEnter2D(Collider2D collider)
-    {
-
-        if (collider.name == "StartFinish")
+        private void Start()
         {
-            if (_pickups >= _pickupsNeeded) GameManager.EndGameEvent.Invoke();
-            else GameManager.StartGameEvent.Invoke();
+            _originVector3 = transform.position;
+            _originQuaternion = transform.rotation;
         }
 
-        if (collider.name.Contains("Pickup"))
+        public void Reset()
         {
-            _pickups++;
-            collider.gameObject.SetActive(false);
+            transform.position = _originVector3;
+            transform.rotation = _originQuaternion;
+            var rbody = GetComponent<Rigidbody2D>();
+            rbody.angularVelocity = 0;
+            rbody.velocity = Vector2.zero;
+
+            Tuner.SendTuningValues();
+        }
+
+        public void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.name == "StartFinish")
+                if (_pickups >= _pickupsNeeded) GameManager.EndGameEvent.Invoke();
+                else GameManager.StartGameEvent.Invoke();
+
+            if (collider.name.Contains("Pickup"))
+            {
+                _pickups++;
+                collider.gameObject.SetActive(false);
+            }
         }
     }
 }

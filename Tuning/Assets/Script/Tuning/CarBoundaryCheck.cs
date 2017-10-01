@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-public class CarBoundaryCheck : MonoBehaviour
+namespace Tuning
 {
-    public void OnTriggerExit2D(Collider2D collider)
+    public class CarBoundaryCheck : MonoBehaviour
     {
-        if (collider.name == "Track")
+        public void OnTriggerExit2D(Collider2D collider)
         {
+            if (collider.name != "Track") return;
             Debug.Log("Out of bounds!");
             GetComponentInParent<Car>().Reset();
         }

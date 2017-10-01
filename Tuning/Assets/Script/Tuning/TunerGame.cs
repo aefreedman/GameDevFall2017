@@ -1,31 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class TunerGame : MonoBehaviour
+namespace Tuning
 {
-    public float Time { get; private set; }
-    private bool _timeRunning;
-
-    public UnityEvent StartGameEvent;
-    public UnityEvent EndGameEvent;
-
-    private void Start()
+    public class TunerGame : MonoBehaviour
     {
-        Time = 0;
-    }
+        private bool _timeRunning;
+        public UnityEvent EndGameEvent;
 
-    private void Update()
-    {
-        if (_timeRunning) Time += UnityEngine.Time.deltaTime;
-    }
+        public UnityEvent StartGameEvent;
+        public float Time { get; private set; }
 
-    public void StartTimer()
-    {
-        _timeRunning = true;
-    }
+        private void Start()
+        {
+            Time = 0;
+        }
 
-    public void EndTimer()
-    {
-        _timeRunning = false;
+        private void Update()
+        {
+            if (_timeRunning) Time += UnityEngine.Time.deltaTime;
+        }
+
+        public void StartTimer()
+        {
+            _timeRunning = true;
+        }
+
+        public void EndTimer()
+        {
+            _timeRunning = false;
+        }
     }
 }

@@ -1,29 +1,33 @@
-﻿using UnityEngine;
+﻿using Movement;
+using ScriptableObject;
+using UnityEngine;
 
-public class CarTuner : MonoBehaviour
+namespace Tuning
 {
-    public Car MyCar;
-    public CarMovement MyCarMovement;
-
-    [Header("Tuning Values")]
-    public float TurningRate;
-    public float MaxAngularVelocity;
-    public float BrakeStrength;
-    public float Acceleration;
-    public float MaxAcceleration;
-    public float LinearDrag;
-    public float AngularDrag;
-    public float Mass;
-
-    private void Start()
+    public class CarTuner : MonoBehaviour
     {
-        SendTuningValues();
-    }
+        public Car MyCar;
+        public CarController MyCarController;
+        public TunerSettingsObject SettingsObject;
 
-    public void SendTuningValues()
-    {
-        MyCarMovement.SetTuningValues(Acceleration, MaxAcceleration, BrakeStrength, Mass, LinearDrag, TurningRate,
-            AngularDrag, MaxAngularVelocity);
-    }
+        private void Start()
+        {
+            SendTuningValues();
+        }
 
+        /// <summary>
+        /// </summary>
+        public void SendTuningValues()
+        {
+            MyCarController.SetTuningValues(
+                SettingsObject.CarSettings.Acceleration,
+                SettingsObject.CarSettings.MaxAcceleration,
+                SettingsObject.CarSettings.BrakeStrength,
+                SettingsObject.CarSettings.Mass,
+                SettingsObject.CarSettings.LinearDrag,
+                SettingsObject.CarSettings.TurningRate,
+                SettingsObject.CarSettings.AngularDrag,
+                SettingsObject.CarSettings.MaxAngularVelocity);
+        }
+    }
 }
