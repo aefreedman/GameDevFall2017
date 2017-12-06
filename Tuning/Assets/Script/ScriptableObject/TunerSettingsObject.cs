@@ -6,5 +6,13 @@ namespace ScriptableObject
     public class TunerSettingsObject : UnityEngine.ScriptableObject
     {
         public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
+//        public TunerSettings.CarSettings CarSettings;
     }
 }

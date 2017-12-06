@@ -7,8 +7,8 @@ namespace Managers
     {
         private bool _timeRunning;
         public UnityEvent EndGameEvent;
-
         public UnityEvent StartGameEvent;
+        
         public float Time { get; private set; }
 
         private void Start()
